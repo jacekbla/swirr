@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Terrain
+  - Ammo
   layers:
   - Default
   - TransparentFX

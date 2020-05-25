@@ -12,7 +12,10 @@ public class UISingleton : MonoBehaviour
     private Text gameOverLabel;
 
     [SerializeField]
-    private Text magazineLabel;
+    private Text bulletsLabel;
+
+    [SerializeField]
+    private Text magazinesLabel;
 
     // Start is called before the first frame update
     private static UISingleton instance = null;
@@ -45,11 +48,14 @@ public class UISingleton : MonoBehaviour
         healthLabel.text = "Health: " + health.ToString();
     }
 
-    public void setMagazine(string bulletsInMagazine)
+    public void setBullets(string bulletsInMagazine)
     {
-        magazineLabel.text = "Bullets: " + bulletsInMagazine;
+        bulletsLabel.text = "Bullets: " + bulletsInMagazine;
     }
 
+    public void setMagazines(string magazines){
+        magazinesLabel.text = "Magazines: " + magazines;
+    }
     public void showGameOver()
     {
         Debug.Log("gameOver");

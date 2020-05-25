@@ -8,6 +8,8 @@ public class MobCircle : MonoBehaviour
    public GameObject[] prefabs;
    public int numberOfObjects = 20;
    public float radius = 5f;
+
+   public bool hasEnemyController = false;
    void Start()
    {
         InvokeRepeating("SpawnMobs", 0, 60);
@@ -27,8 +29,10 @@ public class MobCircle : MonoBehaviour
             GameObject prefab = GetPrefab();
             if(prefab){
                 GameObject newMob = (GameObject)Instantiate(prefab, pos, rot);
-                EnemyController enemyController = newMob.GetComponent<EnemyController>();
-                enemyController.target = GameObject.Find("OVRPlayerController").transform;
+                if(hasEnemyController){
+                    EnemyController enemyController = newMob.GetComponent<EnemyController>();
+                    enemyController.target = GameObject.Find("OVRPlayerController").transform;
+                }
             }
         }
     }

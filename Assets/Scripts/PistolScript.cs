@@ -10,15 +10,19 @@ public class PistolScript : MonoBehaviour
     public float bulletSpeed = 20;
     public int bulletsInMagazine = 10;
 
+    public int magazines = 2;
+
     private Vector3 shift = new Vector3(0, 0.2f, 0);
     private bool canFire = true;
+
 
     UISingleton uISingleton;
     // Start is called before the first frame update
     void Start()
     {
         uISingleton = UISingleton.Instance;
-        uISingleton.setMagazine(bulletsInMagazine.ToString());
+        uISingleton.setBullets(bulletsInMagazine.ToString());
+        uISingleton.setMagazines(magazines.ToString());
     }
 
     // Update is called once per frame
@@ -36,22 +40,31 @@ public class PistolScript : MonoBehaviour
                 {
                     canFire = false;
                 }
-                uISingleton.setMagazine(bulletsInMagazine.ToString());
+                uISingleton.setBullets(bulletsInMagazine.ToString());
             }
         }
         if (Input.GetKeyDown("r"))
         {
-            canFire = false;
-            StartCoroutine(Reload());
+            if(magazines > 0){
+                canFire = false;
+                StartCoroutine(Reload());
+            }
         }
     }
 
     IEnumerator Reload()
     {
-        uISingleton.setMagazine("reloading");
+        uISingleton.setBullets("reloading");
         yield return new WaitForSeconds(2);
         bulletsInMagazine = 10;
-        uISingleton.setMagazine(bulletsInMagazine.ToString());
+        magazines --;
+        uISingleton.setBullets(bulletsInMagazine.ToString());
+        uISingleton.setMagazines(magazines.ToString());
         canFire = true;
+    }
+
+    public int AddMagazine(){
+            this.magazines++;
+            return this.magazines;
     }
 }
