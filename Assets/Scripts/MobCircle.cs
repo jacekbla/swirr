@@ -5,7 +5,7 @@ using UnityEngine;
 public class MobCircle : MonoBehaviour
 {
     // Instantiates prefabs in a circle formation
-   public GameObject prefab;
+   public GameObject[] prefabs;
    public int numberOfObjects = 20;
    public float radius = 5f;
    void Start()
@@ -24,12 +24,21 @@ public class MobCircle : MonoBehaviour
             float angleDegrees = -angle * Mathf.Rad2Deg;
             Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
 
-            GameObject newMob = (GameObject)Instantiate(prefab, pos, rot);
-            EnemyController enemyController = newMob.GetComponent<EnemyController>();
-            enemyController.target = GameObject.Find("OVRPlayerController").transform;
-
-
+            GameObject prefab = GetPrefab();
+            if(prefab){
+                GameObject newMob = (GameObject)Instantiate(prefab, pos, rot);
+                EnemyController enemyController = newMob.GetComponent<EnemyController>();
+                enemyController.target = GameObject.Find("OVRPlayerController").transform;
+            }
         }
+    }
+
+    GameObject GetPrefab(){
+
+        if(prefabs.Length > 0) {
+            return prefabs[Random.Range(0,prefabs.Length)];
+        }
+        return null;
     }
 
     // Update is called once per frame
