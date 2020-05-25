@@ -111,9 +111,8 @@ public class EnemyController : MonoBehaviour {
     private bool pauseWpControl; //makes sure unit pauses appropriately.
  
     private bool smoothAttackRangeBuffer = false; //for runAway AI to not be so messed up by their visual radius and attack range.
- 
-   
- 
+
+    public int health = 3;
    
  
  

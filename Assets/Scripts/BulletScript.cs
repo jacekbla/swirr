@@ -25,8 +25,12 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+            enemy.health--;
             Destroy(this.gameObject);
+            if (enemy.health <= 0) {
+                Destroy(collision.gameObject);
+            }
         }
         else if (collision.gameObject.tag == "Terrain")
         {
