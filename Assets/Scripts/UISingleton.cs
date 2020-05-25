@@ -11,6 +11,9 @@ public class UISingleton : MonoBehaviour
     [SerializeField]
     private Text gameOverLabel;
 
+    [SerializeField]
+    private Text magazineLabel;
+
     // Start is called before the first frame update
     private static UISingleton instance = null;
 
@@ -40,6 +43,11 @@ public class UISingleton : MonoBehaviour
     public void setHealth(float health)
     {
         healthLabel.text = "Health: " + health.ToString();
+    }
+
+    public void setMagazine(string bulletsInMagazine)
+    {
+        magazineLabel.text = "Bullets: " + bulletsInMagazine;
     }
 
     public void showGameOver()
