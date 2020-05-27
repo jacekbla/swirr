@@ -1470,6 +1470,8 @@ MonoBehaviour:
   prefabs:
   - {fileID: 9112201153906775539, guid: 0ecb73a63f2333948828307a53c2ee12, type: 3}
   - {fileID: 4734030735273246424, guid: a26a7a8d8d90a904cbf5eba8181ca40b, type: 3}
+  - {fileID: 9112201153906775539, guid: f5d26b3bdc666ec4bb2f8ae098d9f3b4, type: 3}
+  - {fileID: 9112201153906775539, guid: 602315de1439ed34f84590654ece4b0d, type: 3}
   numberOfObjects: 5
   radius: 40
   hasEnemyController: 1
